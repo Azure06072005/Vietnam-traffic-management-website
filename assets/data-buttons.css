@@ -1,0 +1,77 @@
+/* Styles for data management buttons */
+.data-management-section {
+  margin-bottom: 2rem;
+}
+
+.section-header {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.data-buttons-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.data-button {
+  flex: 1;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+.data-button.add {
+  background-color: #10b981; /* Green color for add button */
+}
+
+.data-button.edit {
+  background-color: #3b82f6; /* Blue color for edit button */
+}
+
+.data-button:hover {
+  opacity: 0.9;
+}
+
+.data-button:active {
+  transform: scale(0.98);
+}
+
+.file-upload-section {
+  margin-bottom: 1.5rem;
+}
+
+.upload-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.file-status {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.file-name {
+  color: #059669;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .data-buttons-container {
+    flex-direction: column;
+  }
+}

@@ -5,15 +5,82 @@ def create_layout():
     return html.Div([
         # Header
         html.Div([
-            html.H1('Phân tích Dữ liệu Giao thông Việt Nam', className='app-header-title'),
-            html.P('Trực quan hóa dữ liệu vi phạm và tai nạn giao thông theo tỉnh/thành phố', className='app-header-desc')
+            html.Div([
+                html.Img(src='assets/logo.png', className='app-logo'),
+                html.Div([
+                    html.H1('Phân tích Dữ liệu Giao thông Việt Nam', className='app-header-title'),
+                    html.P('Trực quan hóa dữ liệu vi phạm và tai nạn giao thông', className='app-header-desc')
+                ], className='header-text')
+            ], className='header-container')
         ], className='app-header'),
+        
+        # Navigation Menu
+        html.Div([
+            html.Nav([
+                html.Button([
+                    html.I(className='fas fa-bars')
+                ], className='mobile-menu-toggle', id='mobile-menu-toggle'),
+                html.Ul([
+                    html.Li([
+                        html.A('Trang chủ', href='/', className='nav-link')
+                    ], className='nav-item active'),
+                    
+                    html.Li([
+                        html.A('Tin tức', href='/tin-tuc', className='nav-link'),
+                        html.Div([
+                            html.A('Thông tin về cục cảnh sát giao thông', href='/tin-tuc/canh-sat-giao-thong', className='dropdown-item'),
+                            html.A('Các số đường dây nóng', href='/tin-tuc/duong-day-nong', className='dropdown-item')
+                        ], className='dropdown-menu')
+                    ], className='nav-item nav-dropdown'),
+                    
+                    html.Li([
+                        html.A('Tra cứu phương tiện', href='/tra-cuu', className='nav-link'),
+                        html.Div([
+                            html.A('Xe máy', href='/tra-cuu/xe-may', className='dropdown-item'),
+                            html.A('Ô tô', href='/tra-cuu/o-to', className='dropdown-item')
+                        ], className='dropdown-menu')
+                    ], className='nav-item nav-dropdown'),
+                    
+                    html.Li([
+                        html.A('Diễn đàn', href='/dien-dan', className='nav-link')
+                    ], className='nav-item'),
+                    
+                    html.Li([
+                        html.A('Đấu giá biển số', href='/dau-gia-bien-so', className='nav-link')
+                    ], className='nav-item'),
+                    
+                    html.Li([
+                        html.A('An toàn giao thông', href='/an-toan-giao-thong', className='nav-link'),
+                        html.Div([
+                            html.A('Quy tắc cơ bản khi tham gia giao thông', href='/an-toan-giao-thong/quy-tac', className='dropdown-item'),
+                            html.A('Ngày hội an toàn giao thông Việt Nam', href='/an-toan-giao-thong/ngay-hoi', className='dropdown-item')
+                        ], className='dropdown-menu')
+                    ], className='nav-item nav-dropdown'),
+                    
+                    # Thêm mục Hỗ trợ
+                    html.Li([
+                        html.A('Hỗ trợ', href='/ho-tro', className='nav-link'),
+                        html.Div([
+                            html.A('Điều khoản sử dụng', href='/ho-tro/dieu-khoan', className='dropdown-item'),
+                            html.A('Hướng dẫn sử dụng', href='/ho-tro/huong-dan', className='dropdown-item'),
+                            html.A('Thông báo', href='/ho-tro/thong-bao', className='dropdown-item')
+                        ], className='dropdown-menu')
+                    ], className='nav-item nav-dropdown')
+                ], className='nav-list', id='nav-list')
+            ], className='nav-menu')
+        ], className='nav-container'),
         
         # Container chính
         html.Div([
-            # Section tải lên dữ liệu
+            # Data Management Section với 2 nút lớn
             html.Div([
-                html.H2('Tải lên dữ liệu', className='section-title'),
+                html.H2('Quản lý dữ liệu', className='section-title'),
+                
+                # Thêm hai nút lớn
+                html.Div([
+                    html.Button('Thêm dữ liệu', className='data-button add', id='add-data-btn'),
+                    html.Button('Chỉnh sửa dữ liệu', className='data-button edit', id='edit-data-btn')
+                ], className='data-buttons-container'),
                 
                 # GeoJSON upload
                 html.Div([
@@ -46,13 +113,7 @@ def create_layout():
                 ], className='upload-container'),
                 
                 # Nút xử lý
-                html.Button('Xử lý dữ liệu', id='process-button', className='process-button', n_clicks=0),
-                
-                # Hoặc sử dụng dữ liệu mẫu
-                html.Div([
-                    html.P('hoặc', className='option-divider'),
-                    html.Button('Sử dụng dữ liệu mẫu', id='use-sample-data', className='sample-data-button', n_clicks=0)
-                ], className='option-container')
+                html.Button('Xử lý dữ liệu', id='process-button', className='process-button', n_clicks=0)
                 
             ], className='settings-section'),
             
@@ -60,30 +121,42 @@ def create_layout():
             html.Div([
                 html.H2('Cấu hình trực quan hóa', className='section-title'),
                 
-                # Chọn kiểu dữ liệu hiển thị
-                html.Div([
-                    html.Label('Loại dữ liệu:', className='control-label'),
-                    dcc.Tabs(id='data-type-tabs', value='violations', children=[
-                        dcc.Tab(label='Vi phạm giao thông', value='violations', className='custom-tab', selected_className='custom-tab-selected'),
-                        dcc.Tab(label='Tai nạn giao thông', value='accidents', className='custom-tab', selected_className='custom-tab-selected')
-                    ], className='tabs-container')
-                ], className='control-container'),
-                
-                # Chọn cột dữ liệu
+                # Chọn cột dữ liệu (dropdown)
                 html.Div([
                     html.Div([
-                        html.Label('Cột tên tỉnh/thành:', className='control-label'),
-                        dcc.Dropdown(id='province-column', className='dropdown-control', disabled=True)
+                        html.Label('Chọn cột tỉnh/thành:', className='control-label'),
+                        dcc.Dropdown(
+                            id='province-column',
+                            options=[],
+                            placeholder='Chọn cột chứa tên tỉnh/thành phố',
+                            className='dropdown-control'
+                        )
                     ], className='control-item'),
                     
                     html.Div([
-                        html.Label('Cột dữ liệu vi phạm:', className='control-label'),
-                        dcc.Dropdown(id='violations-column', className='dropdown-control', disabled=True)
+                        html.Label('Chọn loại dữ liệu:', className='control-label'),
+                        dcc.Dropdown(
+                            id='data-type',
+                            options=[
+                                {'label': 'Vi phạm giao thông', 'value': 'violations'},
+                                {'label': 'Tai nạn giao thông', 'value': 'accidents'},
+                                {'label': 'Tử vong', 'value': 'deaths'},
+                                {'label': 'Bị thương', 'value': 'injuries'},
+                                {'label': 'Mức phạt', 'value': 'fines'}
+                            ],
+                            value='violations',
+                            className='dropdown-control'
+                        )
                     ], className='control-item'),
                     
                     html.Div([
-                        html.Label('Cột dữ liệu tai nạn:', className='control-label'),
-                        dcc.Dropdown(id='accidents-column', className='dropdown-control', disabled=True)
+                        html.Label('Chọn cột dữ liệu:', className='control-label'),
+                        dcc.Dropdown(
+                            id='data-column',
+                            options=[],
+                            placeholder='Chọn cột dữ liệu',
+                            className='dropdown-control'
+                        )
                     ], className='control-item')
                 ], className='columns-container'),
                 
@@ -132,7 +205,7 @@ def create_layout():
         html.Div([
             html.H2(id='results-title', className='results-title'),
             
-            # Thẻ tổng quan
+            # Thẻ tổng quan - thống kê chính
             html.Div([
                 html.Div([
                     html.H3('Tổng số', className='stat-title'),
@@ -157,6 +230,37 @@ def create_layout():
                 ], className='stat-card')
             ], className='stats-container'),
             
+            # Thẻ tổng hợp - thống kê bổ sung
+            html.Div([
+                html.H3('Thống kê tổng hợp', className='section-subtitle'),
+                html.Div([
+                    html.Div([
+                        html.H3('Tổng số vi phạm', className='stat-title'),
+                        html.Div(id='total-violations', className='stat-value')
+                    ], className='stat-card'),
+                    
+                    html.Div([
+                        html.H3('Tổng số tai nạn', className='stat-title'),
+                        html.Div(id='total-accidents', className='stat-value')
+                    ], className='stat-card'),
+                    
+                    html.Div([
+                        html.H3('Tổng số tử vong', className='stat-title'),
+                        html.Div(id='total-deaths', className='stat-value')
+                    ], className='stat-card'),
+                    
+                    html.Div([
+                        html.H3('Tổng số bị thương', className='stat-title'),
+                        html.Div(id='total-injuries', className='stat-value')
+                    ], className='stat-card'),
+                    
+                    html.Div([
+                        html.H3('Tổng mức phạt', className='stat-title'),
+                        html.Div(id='total-fines', className='stat-value')
+                    ], className='stat-card')
+                ], className='stats-container')
+            ], className='summary-section'),
+            
             # Khu vực hiển thị bản đồ
             html.Div([
                 html.Div(id='map-container', className='map-container')
@@ -177,6 +281,9 @@ def create_layout():
         # Footer
         html.Footer([
             html.P('© 2025 - Ứng dụng Phân tích Dữ liệu Giao thông Việt Nam', className='footer-text')
-        ], className='app-footer')
+        ], className='app-footer'),
+        
+        # Load JavaScript cho navigation
+        html.Script(src='assets/navigation.js')
         
     ], className='app-container')

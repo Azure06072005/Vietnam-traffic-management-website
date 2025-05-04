@@ -11,6 +11,9 @@
   --error-color: #ef4444;
   --violations-color: #b91c1c;
   --accidents-color: #1d4ed8;
+  --deaths-color: #b91c1c;
+  --injuries-color: #ca8a04;
+  --fines-color: #059669;
 }
 
 * {
@@ -40,7 +43,22 @@ body {
   );
   color: white;
   padding: 2rem;
-  text-align: center;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-logo {
+  height: 120px;
+  margin-right: 20px;
+}
+
+.header-text {
+  flex: 1;
 }
 
 .app-header-title {
@@ -74,6 +92,13 @@ body {
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--secondary-color);
   color: var(--primary-color);
+}
+
+.section-subtitle {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  text-align: center;
 }
 
 .upload-container {
@@ -193,19 +218,6 @@ body {
   min-width: 200px;
 }
 
-.tabs-container {
-  margin-bottom: 1rem;
-}
-
-.custom-tab {
-  padding: 0.8rem 1.2rem;
-}
-
-.custom-tab-selected {
-  font-weight: 600;
-  border-top: 2px solid var(--secondary-color);
-}
-
 .checklist-control {
   display: flex;
   flex-wrap: wrap;
@@ -278,6 +290,14 @@ body {
   margin-top: 0.3rem;
 }
 
+.summary-section {
+  margin-bottom: 2rem;
+  background-color: var(--light-gray);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
 .visualization-section {
   margin-bottom: 2rem;
   background-color: var(--light-gray);
@@ -326,5 +346,15 @@ body {
   .section-title,
   .results-title {
     font-size: 1.4rem;
+  }
+
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .app-logo {
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 }
