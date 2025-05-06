@@ -6,7 +6,12 @@ def create_layout():
         # Header
         html.Div([
             html.Div([
-                html.Img(src='assets/logo.png', className='app-logo'),
+                # Logo và tên web
+                html.Div([
+                    html.Img(src='assets/logo.png', className='app-logo'),
+                    html.Div('VNTraffic', className='brand-name')
+                ], className='logo-container'),
+                
                 html.Div([
                     html.H1('Phân tích Dữ liệu Giao thông Việt Nam', className='app-header-title'),
                     html.P('Trực quan hóa dữ liệu vi phạm và tai nạn giao thông', className='app-header-desc')
@@ -20,6 +25,8 @@ def create_layout():
                 html.Button([
                     html.I(className='fas fa-bars')
                 ], className='mobile-menu-toggle', id='mobile-menu-toggle'),
+                
+                # Main navigation items
                 html.Ul([
                     html.Li([
                         html.A('Trang chủ', href='/', className='nav-link')
@@ -57,16 +64,69 @@ def create_layout():
                         ], className='dropdown-menu')
                     ], className='nav-item nav-dropdown'),
                     
-                    # Thêm mục Hỗ trợ
+                    # Mục Hỗ trợ
                     html.Li([
                         html.A('Hỗ trợ', href='/ho-tro', className='nav-link'),
                         html.Div([
-                            html.A('Điều khoản sử dụng', href='/ho-tro/dieu-khoan', className='dropdown-item'),
-                            html.A('Hướng dẫn sử dụng', href='/ho-tro/huong-dan', className='dropdown-item'),
+                            html.A('Điều khoản sử dụng', href='/ho-tro/dieu-khoan-su-dung.html', className='dropdown-item'),
+                            html.A('Hướng dẫn sử dụng', href='/ho-tro/huong-dan-su-dung.html', className='dropdown-item'),
                             html.A('Thông báo', href='/ho-tro/thong-bao', className='dropdown-item')
                         ], className='dropdown-menu')
                     ], className='nav-item nav-dropdown')
-                ], className='nav-list', id='nav-list')
+                ], className='nav-list', id='nav-list'),
+                
+                # Right-side elements (language selector and user profile)
+                html.Div([
+                    # Language selector
+                    html.Div([
+                        html.A([
+                            html.Img(src='assets/vietnam.png', className='language-icon', id='current-flag'),
+                            html.Span('Tiếng Việt', id='current-language')
+                        ], href='#', className='nav-link', id='language-selector'),
+                        
+                        html.Div([
+                            html.A([
+                                html.Img(src='assets/vietnam.png', className='language-icon'),
+                                html.Span('Tiếng Việt', className='language-name')
+                            ], href='#', className='dropdown-item language-item', id='lang-vi', **{'data-lang': 'vi'}),
+                            
+                            html.A([
+                                html.Img(src='assets/uk.png', className='language-icon'),
+                                html.Span('English', className='language-name')
+                            ], href='#', className='dropdown-item language-item', id='lang-en', **{'data-lang': 'en'}),
+                            
+                            html.A([
+                                html.Img(src='assets/japan.png', className='language-icon'),
+                                html.Span('日本語', className='language-name')
+                            ], href='#', className='dropdown-item language-item', id='lang-ja', **{'data-lang': 'ja'}),
+                            
+                            html.A([
+                                html.Img(src='assets/russia.png', className='language-icon'),
+                                html.Span('Русский', className='language-name')
+                            ], href='#', className='dropdown-item language-item', id='lang-ru', **{'data-lang': 'ru'})
+                            
+                        ], className='dropdown-menu language-dropdown', id='language-dropdown')
+                    ], className='language-selector nav-dropdown'),
+                    
+                    html.Div(className='nav-divider'),
+                    
+                    # User profile
+                    html.Div([
+                        html.A([
+                            html.Span('Xin chào ', className='greeting'),
+                            html.Span('Trần Anh Kiệt', className='user-name')
+                        ], href='#', className='nav-link', id='user-profile'),
+                        
+                        html.Div([
+                            html.A('Hồ sơ', href='/ho-so', className='dropdown-item'),
+                            html.A('Báo cáo', href='/bao-cao', className='dropdown-item'),
+                            html.A('Yêu cầu dữ liệu', href='/yeu-cau-du-lieu', className='dropdown-item'),
+                            html.A('Cài đặt', href='/cai-dat', className='dropdown-item'),
+                            html.Hr(style={'margin': '0.3rem 0', 'border-color': '#eaeaea'}),
+                            html.A('Đăng xuất', href='/dang-xuat', className='dropdown-item')
+                        ], className='dropdown-menu user-dropdown', id='user-dropdown')
+                    ], className='user-profile nav-dropdown')
+                ], className='nav-right', id='nav-right')
             ], className='nav-menu')
         ], className='nav-container'),
         
@@ -166,9 +226,9 @@ def create_layout():
                     dcc.Checklist(
                         id='display-options',
                         options=[
-                            {'label': 'Hiển thị bản đồ', 'value': 'show_map'},
-                            {'label': 'Hiển thị biểu đồ cột', 'value': 'show_bar'},
-                            {'label': 'Hiển thị bảng dữ liệu', 'value': 'show_table'}
+                            {'label': ' Hiển thị bản đồ', 'value': 'show_map'},
+                            {'label': ' Hiển thị biểu đồ cột', 'value': 'show_bar'},
+                            {'label': ' Hiển thị bảng dữ liệu', 'value': 'show_table'}
                         ],
                         value=['show_map', 'show_bar', 'show_table'],
                         className='checklist-control'
@@ -280,7 +340,7 @@ def create_layout():
         
         # Footer
         html.Footer([
-            html.P('© 2025 - Ứng dụng Phân tích Dữ liệu Giao thông Việt Nam', className='footer-text')
+            html.P('© 2025 - VNTraffic | Ứng dụng Phân tích Dữ liệu Giao thông Việt Nam', className='footer-text')
         ], className='app-footer'),
         
         # Load JavaScript cho navigation

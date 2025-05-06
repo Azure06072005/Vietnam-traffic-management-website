@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hướng dẫn sử dụng</title>
+    <style>
+      :root {
+        --primary-color: #1e40af;
+        --secondary-color: #3b82f6;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #1e40af;
+        border-bottom: 2px solid #3b82f6;
+        padding-bottom: 10px;
+        margin-top: 0;
+      }
+
+      h2 {
+        color: #1e40af;
+        margin-top: 30px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      h3 {
+        color: #1f2937;
+      }
+
+      code,
+      pre {
+        background-color: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
+        padding: 2px 5px;
+        font-family: "Consolas", "Monaco", monospace;
+      }
+
+      pre {
+        padding: 15px;
+        overflow-x: auto;
+      }
+
+      .note {
+        background-color: #eff6ff;
+        border-left: 4px solid #3b82f6;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+
+      .warning {
+        background-color: #fff7ed;
+        border-left: 4px solid #f59e0b;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 8px;
+      }
+
+      .contact-box {
+        background-color: #f8fafc;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 0.9em;
+      }
+
+      .interface-img {
+        border: 1px solid #e5e7eb;
+        margin: 15px 0;
+        max-width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hướng dẫn sử dụng</h1>
+      <h2>Menu chính</h2>
+      <p>Thanh menu chính của VNTraffic bao gồm các mục:</p>
+      <ul>
+        <li><strong>Trang chủ</strong>: Quay về trang chính của ứng dụng</li>
+        <li>
+          <strong>Tin tức</strong>: Thông tin về tình hình giao thông và các bản
+          tin mới nhất
+        </li>
+        <li>
+          <strong>Tra cứu phương tiện</strong>: Tra cứu thông tin về các phương
+          tiện giao thông
+        </li>
+        <li>
+          <strong>Diễn đàn</strong>: Diễn đàn thảo luận về các vấn đề giao thông
+        </li>
+        <li>
+          <strong>Đấu giá biển số</strong>: Thông tin và tính năng liên quan đến
+          đấu giá biển số xe
+        </li>
+        <li>
+          <strong>An toàn giao thông</strong>: Thông tin và hướng dẫn về an toàn
+          giao thông
+        </li>
+        <li>
+          <strong>Hỗ trợ</strong>: Trợ giúp, hướng dẫn sử dụng và các thông tin
+          liên hệ
+        </li>
+      </ul>
+
+      <h2>Quản lý dữ liệu</h2>
+      <p>
+        Phần Quản lý dữ liệu cho phép bạn tải lên và quản lý các file dữ liệu để
+        phân tích.
+      </p>
+
+      <h3>Thêm dữ liệu</h3>
+      <p>
+        Nhấn vào nút "Thêm dữ liệu" (màu xanh lá) để thêm dữ liệu mới vào hệ
+        thống. VNTraffic yêu cầu hai loại dữ liệu:
+      </p>
+
+      <ol>
+        <li>
+          <strong>File GeoJSON</strong>: Chứa dữ liệu địa lý của các tỉnh/thành
+          phố Việt Nam.
+          <ul>
+            <li>
+              Kéo thả file vào khu vực quy định hoặc nhấn "Chọn file GeoJSON" để
+              tải lên
+            </li>
+            <li>
+              Sau khi tải lên thành công, bạn sẽ thấy thông báo "Đã tải lên:
+              diaphantinh.geojson"
+            </li>
+          </ul>
+        </li>
+        <li>
+          <strong>File CSV dữ liệu giao thông</strong>: Chứa dữ liệu về vi phạm,
+          tai nạn, và các thông tin liên quan.
+          <ul>
+            <li>
+              Kéo thả file vào khu vực quy định hoặc nhấn "Chọn file CSV" để tải
+              lên
+            </li>
+            <li>
+              Sau khi tải lên thành công, bạn sẽ thấy thông báo "Đã tải lên:
+              vipham_updated.csv"
+            </li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Chỉnh sửa dữ liệu</h3>
+      <p>
+        Nhấn vào nút "Chỉnh sửa dữ liệu" (màu xanh dương) để sửa đổi dữ liệu đã
+        tải lên. Tính năng này cho phép bạn:
+      </p>
+      <ul>
+        <li>Cập nhật thông tin trong file đã tải lên</li>
+        <li>Loại bỏ dữ liệu không chính xác</li>
+        <li>Thêm thông tin bổ sung</li>
+      </ul>
+
+      <h2>Cấu hình trực quan hóa</h2>
+      <p>
+        Phần Cấu hình trực quan hóa cho phép bạn tùy chỉnh cách hiển thị dữ
+        liệu:
+      </p>
+
+      <h3>Chọn dữ liệu phân tích</h3>
+      <ul>
+        <li>
+          <strong>Chọn cột tỉnh/thành</strong>: Từ dropdown, chọn cột chứa tên
+          tỉnh/thành phố (ví dụ: "Ten_Tinh_Thanh")
+        </li>
+        <li>
+          <strong>Chọn loại dữ liệu</strong>: Chọn loại dữ liệu cần phân tích
+          (ví dụ: "Vi phạm giao thông")
+        </li>
+        <li>
+          <strong>Chọn cột dữ liệu</strong>: Chọn cột cụ thể chứa dữ liệu bạn
+          muốn phân tích (ví dụ: "MAVP")
+        </li>
+      </ul>
+
+      <h3>Tùy chọn hiển thị</h3>
+      <p>Đánh dấu vào các ô để chọn cách hiển thị kết quả:</p>
+      <ul>
+        <li>
+          <strong>Hiển thị bản đồ</strong>: Hiển thị dữ liệu trên bản đồ Việt
+          Nam
+        </li>
+        <li>
+          <strong>Hiển thị biểu đồ cột</strong>: Hiển thị dữ liệu dưới dạng biểu
+          đồ cột
+        </li>
+        <li>
+          <strong>Hiển thị bảng dữ liệu</strong>: Hiển thị dữ liệu dưới dạng
+          bảng chi tiết
+        </li>
+      </ul>
+
+      <h3>Bảng màu bản đồ</h3>
+      <p>Chọn bảng màu cho bản đồ từ dropdown (mặc định: "Đỏ")</p>
+      <ul>
+        <li>
+          Các tùy chọn bao gồm: Đỏ, Xanh dương, Xanh lá, Vàng-Cam-Đỏ, Tím,
+          Đỏ-Xanh, Viridis, Plasma
+        </li>
+      </ul>
+
+      <h3>Xử lý dữ liệu</h3>
+      <p>
+        Sau khi hoàn tất các tùy chọn, nhấn nút "Xử lý dữ liệu" để phân tích và
+        hiển thị kết quả.
+      </p>
+
+      <h2>Xem kết quả phân tích</h2>
+      <p>Sau khi xử lý dữ liệu, bạn sẽ thấy các phần kết quả phân tích:</p>
+
+      <h3>Thống kê tổng quan</h3>
+      <p>Hiển thị các chỉ số quan trọng:</p>
+      <ul>
+        <li>
+          <strong>Tổng số</strong>: Tổng số dữ liệu đã chọn trên toàn quốc
+        </li>
+        <li>
+          <strong>Trung bình mỗi tỉnh</strong>: Giá trị trung bình trên mỗi
+          tỉnh/thành
+        </li>
+        <li>
+          <strong>Cao nhất</strong>: Tỉnh/thành có giá trị cao nhất và giá trị
+          tương ứng
+        </li>
+        <li>
+          <strong>Thấp nhất</strong>: Tỉnh/thành có giá trị thấp nhất và giá trị
+          tương ứng
+        </li>
+      </ul>
+
+      <h3>Thống kê tổng hợp</h3>
+      <p>Hiển thị tổng hợp theo các loại dữ liệu khác nhau:</p>
+      <ul>
+        <li>Tổng số vi phạm</li>
+        <li>Tổng số tai nạn</li>
+        <li>Tổng số tử vong</li>
+        <li>Tổng số bị thương</li>
+        <li>Tổng mức phạt</li>
+      </ul>
+
+      <h3>Bản đồ Choropleth</h3>
+      <ul>
+        <li>Bản đồ màu thể hiện mức độ giá trị trên các tỉnh/thành</li>
+        <li>Di chuột qua mỗi tỉnh/thành để xem chi tiết</li>
+        <li>Màu sắc càng đậm thể hiện giá trị càng cao</li>
+      </ul>
+
+      <h3>Biểu đồ cột</h3>
+      <p>
+        Hiển thị top 10 tỉnh/thành có giá trị cao nhất theo loại dữ liệu đã
+        chọn.
+      </p>
+
+      <h3>Bảng dữ liệu</h3>
+      <ul>
+        <li>
+          Hiển thị chi tiết dữ liệu của tất cả tỉnh/thành, được sắp xếp theo thứ
+          tự giảm dần
+        </li>
+        <li>
+          Có thể sắp xếp và lọc dữ liệu bằng cách nhấn vào tiêu đề cột hoặc sử
+          dụng ô tìm kiếm
+        </li>
+      </ul>
+
+      <h2>Thiết lập ngôn ngữ</h2>
+      <p>
+        VNTraffic hỗ trợ nhiều ngôn ngữ, có thể chọn từ góc trên bên phải của
+        giao diện:
+      </p>
+      <ul>
+        <li>Tiếng Việt (mặc định)</li>
+        <li>English (Tiếng Anh)</li>
+        <li>日本語 (Tiếng Nhật)</li>
+        <li>Русский (Tiếng Nga)</li>
+      </ul>
+
+      <h2>Quản lý tài khoản người dùng</h2>
+      <p>
+        Tùy chọn tài khoản nằm ở góc trên bên phải (Xin chào [Tên người dùng]):
+      </p>
+      <ul>
+        <li><strong>Hồ sơ</strong>: Xem và chỉnh sửa thông tin cá nhân</li>
+        <li><strong>Báo cáo</strong>: Xem các báo cáo đã tạo</li>
+        <li><strong>Yêu cầu dữ liệu</strong>: Yêu cầu dữ liệu bổ sung</li>
+        <li><strong>Cài đặt</strong>: Thay đổi cài đặt tài khoản</li>
+        <li><strong>Đăng xuất</strong>: Đăng xuất khỏi hệ thống</li>
+      </ul>
+
+      <h2>Cấu trúc dữ liệu đầu vào</h2>
+
+      <h3>Yêu cầu file GeoJSON</h3>
+      <p>File GeoJSON cần có cấu trúc:</p>
+
+      <pre>
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "ten_tinh": "Tên tỉnh/thành phố"
+      },
+      "geometry": {
+        // Dữ liệu hình học của tỉnh/thành
+      }
+    }
+    // Các tỉnh/thành khác
+  ]
+}</pre
+      >
+
+      <h3>Yêu cầu file CSV</h3>
+      <p>File CSV nên có các cột sau (có thể thêm các cột khác):</p>
+
+      <pre>
+Ten_Tinh_Thanh,MAVP,MATN,TUVONG,BITHUONG,Tổng mức phạt
+Hà Nội,123,45,5,20,40000000
+TP. Hồ Chí Minh,234,56,8,25,50000000
+...</pre
+      >
+
+      <p>Trong đó:</p>
+      <ul>
+        <li><code>Ten_Tinh_Thanh</code>: Tên tỉnh/thành phố</li>
+        <li><code>MAVP</code>: Mã vi phạm hoặc số lượng vi phạm</li>
+        <li><code>MATN</code>: Mã tai nạn hoặc số lượng tai nạn</li>
+        <li><code>TUVONG</code>: Số người tử vong</li>
+        <li><code>BITHUONG</code>: Số người bị thương</li>
+        <li><code>Tổng mức phạt</code>: Tổng số tiền phạt (đơn vị: VNĐ)</li>
+      </ul>
+
+      <div class="warning">
+        <p>
+          <strong>Lưu ý quan trọng:</strong> Đảm bảo tên tỉnh/thành trong file
+          CSV khớp chính xác với thuộc tính <code>ten_tinh</code> trong file
+          GeoJSON để dữ liệu được hiển thị chính xác trên bản đồ.
+        </p>
+      </div>
+
+      <h2>Xử lý lỗi thường gặp</h2>
+      <p>Một số lỗi phổ biến và cách khắc phục:</p>
+
+      <ol>
+        <li>
+          <strong>Lỗi file không đúng định dạng</strong>: Đảm bảo bạn đang tải
+          lên đúng loại file (GeoJSON và CSV).
+        </li>
+
+        <li>
+          <strong>Lỗi không tìm thấy cột</strong>: Kiểm tra xem bạn đã chọn đúng
+          cột trong file CSV.
+        </li>
+
+        <li>
+          <strong>Lỗi không hiển thị bản đồ</strong>: Có thể do file GeoJSON có
+          vấn đề về tọa độ. Ứng dụng sẽ cố gắng tự động sửa lỗi, nhưng trong một
+          số trường hợp, bạn có thể cần sửa file GeoJSON trước khi tải lên.
+        </li>
+
+        <li>
+          <strong>Không khớp dữ liệu</strong>: Đảm bảo tên tỉnh/thành trong file
+          CSV khớp chính xác với thuộc tính <code>ten_tinh</code> trong file
+          GeoJSON.
+        </li>
+
+        <li>
+          <strong>Lỗi khi chuyển đổi ngôn ngữ</strong>: Nếu giao diện không cập
+          nhật khi chuyển đổi ngôn ngữ, hãy thử làm mới trang.
+        </li>
+      </ol>
+
+      <div class="contact-box">
+        <h2>Liên hệ và hỗ trợ</h2>
+        <p>
+          Nếu bạn gặp vấn đề hoặc có câu hỏi, vui lòng liên hệ với chúng tôi
+          qua:
+        </p>
+        <ul>
+          <li>
+            Email: <a href="mailto:hotro@vntraffic.vn">hotro@vntraffic.vn</a>
+          </li>
+          <li>Hotline: 1900-8888</li>
+          <li>
+            Diễn đàn:
+            <a href="https://forum.vntraffic.vn" target="_blank"
+              >https://forum.vntraffic.vn</a
+            >
+          </li>
+        </ul>
+        <p>Đội ngũ hỗ trợ sẽ phản hồi trong vòng 24 giờ làm việc.</p>
+      </div>
+
+      <div class="footer">
+        <p>
+          © 2025 - VNTraffic | Ứng dụng Phân tích Dữ liệu Giao thông Việt Nam
+        </p>
+        <p>Cập nhật lần cuối: Ngày 05 tháng 05 năm 2025</p>
+      </div>
+    </div>
+  </body>
+</html>

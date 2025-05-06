@@ -8,9 +8,10 @@
 
 .nav-menu {
   display: flex;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0;
+  justify-content: space-between;
 }
 
 .nav-list {
@@ -89,15 +90,76 @@
   padding: 0.5rem;
 }
 
+/* Language selector styles */
+.language-selector {
+  display: flex;
+  align-items: center;
+}
+
+.language-icon {
+  width: 24px;
+  height: 16px;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+  border: 1px solid #eaeaea;
+  object-fit: cover;
+}
+
+.language-dropdown {
+  right: 0;
+  left: auto;
+  min-width: 150px;
+}
+
+.language-item {
+  display: flex;
+  align-items: center;
+}
+
+/* User profile styles */
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.greeting {
+  margin-right: 0.5rem;
+  font-weight: 500;
+}
+
+.user-name {
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.user-dropdown {
+  right: 0;
+  left: auto;
+}
+
+/* Right-side nav items container */
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Divider between sections */
+.nav-divider {
+  height: 24px;
+  width: 1px;
+  background-color: #e0e0e0;
+  margin: 0 0.5rem;
+}
+
 /* Mobile navigation styles */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .mobile-menu-toggle {
     display: block;
   }
 
   .nav-menu {
-    flex-direction: column;
-    padding: 0;
+    flex-wrap: wrap;
   }
 
   .nav-list {
@@ -108,6 +170,20 @@
 
   .nav-list.show {
     display: flex;
+  }
+
+  .nav-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    display: none;
+  }
+
+  .nav-right.show {
+    display: flex;
+    margin-top: 0.5rem;
+    border-top: 1px solid #eaeaea;
+    padding-top: 0.5rem;
   }
 
   .nav-link {
@@ -136,5 +212,25 @@
   .dropdown-item {
     padding: 0.8rem 1.5rem;
     border-bottom: 1px solid #e0e0e0;
+  }
+
+  .language-dropdown,
+  .user-dropdown {
+    position: static;
+    right: auto;
+    width: 100%;
+  }
+
+  .user-profile {
+    width: 100%;
+    margin-left: 0;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .language-selector {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eaeaea;
   }
 }

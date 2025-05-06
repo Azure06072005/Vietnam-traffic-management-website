@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông báo - VNTraffic</title>
+    <style>
+      :root {
+        --primary-color: #1e40af;
+        --secondary-color: #3b82f6;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 20px;
+        background: linear-gradient(
+          120deg,
+          var(--primary-color),
+          var(--secondary-color)
+        );
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #1e40af;
+        border-bottom: 2px solid #3b82f6;
+        padding-bottom: 10px;
+        margin-top: 0;
+      }
+
+      .notification-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .notification-item {
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .notification-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .notification-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #1e40af;
+        margin: 0;
+      }
+
+      .notification-date {
+        color: #6b7280;
+        font-size: 0.9rem;
+      }
+
+      .notification-content {
+        margin-bottom: 10px;
+      }
+
+      .notification-tag {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: white;
+        margin-right: 5px;
+      }
+
+      .tag-update {
+        background-color: #3b82f6;
+      }
+
+      .tag-maintenance {
+        background-color: #f59e0b;
+      }
+
+      .tag-security {
+        background-color: #ef4444;
+      }
+
+      .tag-feature {
+        background-color: #10b981;
+      }
+
+      .tag-announcement {
+        background-color: #8b5cf6;
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .pagination a {
+        display: inline-block;
+        padding: 8px 12px;
+        margin: 0 5px;
+        border: 1px solid #e5e7eb;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #1e40af;
+        transition: all 0.2s;
+      }
+
+      .pagination a:hover {
+        background-color: #eff6ff;
+      }
+
+      .pagination a.active {
+        background-color: #1e40af;
+        color: white;
+        border-color: #1e40af;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Thông báo</h1>
+
+      <ul class="notification-list">
+        <li class="notification-item">
+          <div class="notification-header">
+            <h2 class="notification-title">
+              Cập nhật phiên bản 2.5.0 - Thêm tính năng mới
+            </h2>
+            <span class="notification-date">05/05/2025</span>
+          </div>
+          <div class="notification-content">
+            <p>
+              Chúng tôi vui mừng thông báo về việc ra mắt phiên bản 2.5.0 của
+              VNTraffic với nhiều tính năng mới và cải tiến:
+            </p>
+            <ul>
+              <li>
+                Hỗ trợ 4 ngôn ngữ: Tiếng Việt, Tiếng Anh, Tiếng Nhật và Tiếng
+                Nga
+              </li>
+              <li>Giao diện người dùng được cải thiện</li>
+              <li>Khả năng phân tích dữ liệu nâng cao</li>
+              <li>Thêm công cụ xuất báo cáo sang nhiều định dạng</li>
+              <li>Sửa lỗi và tối ưu hóa hiệu suất</li>
+            </ul>
+            <p>
+              Cập nhật này đã được cài đặt tự động cho tất cả người dùng. Hãy
+              trải nghiệm những tính năng mới và cho chúng tôi biết phản hồi của
+              bạn!
+            </p>
+          </div>
+          <div>
+            <span class="notification-tag tag-update">Cập nhật</span>
+            <span class="notification-tag tag-feature">Tính năng mới</span>
+          </div>
+        </li>
+
+        <li class="notification-item">
+          <div class="notification-header">
+            <h2 class="notification-title">Bảo trì hệ thống theo lịch</h2>
+            <span class="notification-date">01/05/2025</span>
+          </div>
+          <div class="notification-content">
+            <p>Thông báo về việc bảo trì hệ thống theo lịch:</p>
+            <ul>
+              <li>
+                <strong>Thời gian:</strong> 2:00 AM - 5:00 AM (GMT+7), ngày
+                10/05/2025
+              </li>
+              <li>
+                <strong>Tác động:</strong> Hệ thống sẽ không khả dụng trong thời
+                gian này
+              </li>
+              <li>
+                <strong>Mục đích:</strong> Nâng cấp cơ sở hạ tầng máy chủ và tối
+                ưu hóa cơ sở dữ liệu
+              </li>
+            </ul>
+            <p>
+              Chúng tôi đã lên lịch bảo trì vào thời điểm có ít người sử dụng
+              nhất để giảm thiểu tác động. Xin lỗi vì bất kỳ sự bất tiện nào có
+              thể xảy ra.
+            </p>
+          </div>
+          <div>
+            <span class="notification-tag tag-maintenance">Bảo trì</span>
+          </div>
+        </li>
+
+        <li class="notification-item">
+          <div class="notification-header">
+            <h2 class="notification-title">Cập nhật bảo mật quan trọng</h2>
+            <span class="notification-date">28/04/2025</span>
+          </div>
+          <div class="notification-content">
+            <p>
+              Chúng tôi vừa triển khai cập nhật bảo mật quan trọng để bảo vệ hệ
+              thống và dữ liệu của bạn. Cập nhật này:
+            </p>
+            <ul>
+              <li>Tăng cường bảo mật cho quy trình đăng nhập</li>
+              <li>Cải thiện mã hóa dữ liệu người dùng</li>
+              <li>Khắc phục các lỗ hổng bảo mật tiềm ẩn</li>
+            </ul>
+            <p>
+              Bạn không cần thực hiện bất kỳ hành động nào vì các cập nhật đã
+              được áp dụng tự động. Chúng tôi luôn đặt sự bảo mật của dữ liệu
+              người dùng lên hàng đầu.
+            </p>
+          </div>
+          <div>
+            <span class="notification-tag tag-security">Bảo mật</span>
+          </div>
+        </li>
+
+        <li class="notification-item">
+          <div class="notification-header">
+            <h2 class="notification-title">
+              Ra mắt tính năng Phân tích Dự báo Xu hướng
+            </h2>
+            <span class="notification-date">20/04/2025</span>
+          </div>
+          <div class="notification-content">
+            <p>
+              Chúng tôi vui mừng giới thiệu tính năng mới: Phân tích Dự báo Xu
+              hướng! Tính năng này cho phép bạn:
+            </p>
+            <ul>
+              <li>
+                Dự báo xu hướng vi phạm giao thông trong tương lai dựa trên dữ
+                liệu lịch sử
+              </li>
+              <li>
+                Phân tích mẫu thời gian để xác định những khoảng thời gian có
+                nhiều vi phạm nhất
+              </li>
+              <li>
+                Tạo báo cáo dự báo để hỗ trợ việc lập kế hoạch an toàn giao
+                thông
+              </li>
+            </ul>
+            <p>
+              Để sử dụng tính năng này, hãy truy cập vào menu "Phân tích" và
+              chọn "Dự báo Xu hướng".
+            </p>
+          </div>
+          <div>
+            <span class="notification-tag tag-feature">Tính năng mới</span>
+          </div>
+        </li>
+
+        <li class="notification-item">
+          <div class="notification-header">
+            <h2 class="notification-title">
+              Thông báo về chính sách bảo mật mới
+            </h2>
+            <span class="notification-date">15/04/2025</span>
+          </div>
+          <div class="notification-content">
+            <p>
+              Thông báo về việc cập nhật Chính sách Bảo mật của chúng tôi, có
+              hiệu lực từ ngày 01/06/2025. Những thay đổi chính bao gồm:
+            </p>
+            <ul>
+              <li>Làm rõ hơn về cách chúng tôi thu thập và sử dụng dữ liệu</li>
+              <li>Cập nhật thông tin về việc chia sẻ dữ liệu với bên thứ ba</li>
+              <li>
+                Thêm thông tin về quyền của người dùng đối với dữ liệu cá nhân
+              </li>
+              <li>Bổ sung phần về bảo vệ dữ liệu trẻ em</li>
+            </ul>
+            <p>
+              Vui lòng đọc
+              <a href="/ho-tro/chinh-sach-bao-mat">Chính sách Bảo mật</a> mới để
+              hiểu rõ hơn về cách chúng tôi bảo vệ thông tin của bạn. Bằng việc
+              tiếp tục sử dụng dịch vụ của chúng tôi sau ngày 01/06/2025, bạn
+              đồng ý với các thay đổi này.
+            </p>
+          </div>
+          <div>
+            <span class="notification-tag tag-announcement">Thông báo</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">&raquo;</a>
+      </div>
+
+      <div class="footer">
+        <p>
+          © 2025 - VNTraffic | Ứng dụng Phân tích Dữ liệu Giao thông Việt Nam
+        </p>
+        <p>Cập nhật lần cuối: Ngày 05 tháng 05 năm 2025</p>
+        <p>
+          <a href="/ho-tro/dieu-khoan-su-dung">Điều khoản sử dụng</a> |
+          <a href="/ho-tro/chinh-sach-bao-mat">Chính sách bảo mật</a> |
+          <a href="/ho-tro/huong-dan-su-dung">Hướng dẫn sử dụng</a> |
+          <a href="/lien-he">Liên hệ</a>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript để xử lý phân trang
+      document.addEventListener("DOMContentLoaded", function () {
+        const paginationLinks = document.querySelectorAll(".pagination a");
+
+        paginationLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Xóa class active từ tất cả các liên kết
+            paginationLinks.forEach((l) => l.classList.remove("active"));
+
+            // Thêm class active cho liên kết được nhấp vào (trừ nút prev/next)
+            if (
+              !this.textContent.includes("«") &&
+              !this.textContent.includes("»")
+            ) {
+              this.classList.add("active");
+            }
+
+            // Đây là nơi bạn sẽ thêm logic để tải trang mới
+            // Ví dụ: loadPage(this.textContent)
+            console.log("Đang chuyển đến trang: " + this.textContent);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

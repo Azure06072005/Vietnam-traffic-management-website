@@ -15,6 +15,39 @@ def register_callbacks(app, parse_contents, parse_currency):
     global_data = None
     global_summary = None
     
+    @app.callback(
+    [Output('current-flag', 'src'),
+     Output('current-language', 'children')],
+    [Input('lang-vi', 'n_clicks'),
+     Input('lang-en', 'n_clicks'),
+     Input('lang-ja', 'n_clicks'),
+     Input('lang-ru', 'n_clicks')],
+    prevent_initial_call=True
+    )
+    def update_language(*args):
+        # Sử dụng callback context để xác định nút nào đã được nhấn
+        ctx = dash.callback_context
+        
+        # Nếu không có sự kiện được kích hoạt, không cập nhật gì
+        if not ctx.triggered:
+            return dash.no_update, dash.no_update
+        
+        # Lấy ID của component đã kích hoạt sự kiện
+        triggered_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        
+        # Cập nhật ngôn ngữ dựa vào ID được kích hoạt
+        if triggered_id == 'lang-vi':
+            return 'assets/vietnam.png', 'Tiếng Việt'
+        elif triggered_id == 'lang-en':
+            return 'assets/uk.png', 'English'
+        elif triggered_id == 'lang-ja':
+            return 'assets/japan.png', '日本語'
+        elif triggered_id == 'lang-ru':
+            return 'assets/russia.png', 'Русский'
+        
+        # Mặc định không cập nhật gì
+        return dash.no_update, dash.no_update
+    
     # Callback hiển thị trạng thái tải lên GeoJSON
     @app.callback(
         Output('geojson-upload-status', 'children'),
@@ -561,8 +594,8 @@ def register_callbacks(app, parse_contents, parse_currency):
     @app.callback(
         Output('table-container', 'children'),
         [Input('results-panel', 'className'),
-         Input('display-options', 'value'),
-         Input('data-type', 'value')]
+        Input('display-options', 'value'),
+        Input('data-type', 'value')]
     )
     def update_table(results_panel_class, display_options, data_type):
         global global_data
