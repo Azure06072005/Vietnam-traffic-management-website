@@ -6,9 +6,9 @@ import os
 def register_routes(app):
     """Register routes for static HTML files in the ho_tro directory"""
     
-    @app.server.route('/ho_tro/dieu_khoan_su_dung.html')
+    @app.server.route('/ho_tro/dieu_khoan.html')
     def serve_terms():
-        return send_from_directory('ho_tro', 'dieu_khoan_su_dung.html')
+        return send_from_directory('ho_tro', 'dieu_khoan.html')
     
     @app.server.route('/ho_tro/huong_dan_su_dung.html')
     def serve_guide():

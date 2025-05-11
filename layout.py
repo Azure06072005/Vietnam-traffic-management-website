@@ -68,7 +68,7 @@ def create_layout():
                     html.Li([
                         html.A('Hỗ trợ', href='/ho-tro', className='nav-link'),
                         html.Div([
-                            html.A('Điều khoản sử dụng', href='/ho_tro/dieu_khoan_su_dung.html', className='dropdown-item'),
+                            html.A('Điều khoản sử dụng', href='/ho_tro/dieu_khoan.html', className='dropdown-item'),
                             html.A('Hướng dẫn sử dụng', href='/ho_tro/huong_dan_su_dung.html', className='dropdown-item'),
                             html.A('Thông báo', href='/ho_tro/thong_bao.html', className='dropdown-item')
                         ], className='dropdown-menu')
