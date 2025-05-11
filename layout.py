@@ -13,7 +13,7 @@ def create_layout():
                 ], className='logo-container'),
                 
                 html.Div([
-                    html.H1('Phân tích Dữ liệu Giao thông Việt Nam', className='app-header-title'),
+                    html.H1('Giao thông đường bộ Việt Nam', className='app-header-title'),
                     html.P('Trực quan hóa dữ liệu vi phạm và tai nạn giao thông', className='app-header-desc')
                 ], className='header-text')
             ], className='header-container')

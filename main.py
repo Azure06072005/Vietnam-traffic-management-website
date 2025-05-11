@@ -1,6 +1,6 @@
-# Import tất cả từ app.py
+# Import everything from app.py
 from app import app
 
-# Chạy ứng dụng nếu file này được thực thi trực tiếp
+# Run the application if this file is executed directly
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=8050)

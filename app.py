@@ -9,6 +9,7 @@ import json
 import os
 import base64
 import io
+from routes import register_routes
 
 # Định nghĩa các biến toàn cục để lưu trữ dữ liệu
 global_geojson = None
@@ -122,6 +123,7 @@ app.layout = create_layout()
 # Import callbacks từ file callbacks.py
 from callbacks import register_callbacks
 register_callbacks(app, parse_contents, parse_currency)
+register_routes(app)
 
 # Chạy ứng dụng
 if __name__ == '__main__':
