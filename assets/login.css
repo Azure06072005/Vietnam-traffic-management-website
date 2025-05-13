@@ -1,0 +1,366 @@
+/* ===== LOGIN PAGE STYLES ===== */
+:root {
+  --primary-color: #1e40af;
+  --secondary-color: #3b82f6;
+}
+.login-page {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, sans-serif;
+}
+
+.login-wrapper {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+}
+
+.login-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== LOGIN HEADER ===== */
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.login-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+  margin: 0;
+}
+
+/* ===== LOGIN FORM ===== */
+.login-form-container {
+  width: 100%;
+}
+
+.login-field {
+  margin-bottom: 20px;
+}
+
+.login-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.login-input {
+  width: 100% !important;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.login-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.login-input::placeholder {
+  color: #a0a5ab;
+}
+
+/* ===== REMEMBER ME CHECKBOX ===== */
+.remember-checkbox {
+  margin: 0;
+}
+
+.remember-checkbox .form-check-input {
+  margin-right: 8px;
+}
+
+.remember-checkbox label {
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+/* ===== LOGIN BUTTON ===== */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+/* ===== ERROR MESSAGE ===== */
+.login-error {
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  color: #c33;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.login-error.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== LOGIN OPTIONS ===== */
+.login-options {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.login-link {
+  font-size: 14px;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.login-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.forgot-password {
+  margin-right: auto;
+}
+
+.register {
+  margin-left: auto;
+}
+
+/* ===== DEMO SECTION ===== */
+.login-demo-section {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.login-demo-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+}
+
+.login-demo-info {
+  font-size: 13px;
+  color: #666;
+  margin: 4px 0;
+  font-family: "Courier New", monospace;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 480px) {
+  .login-page {
+    padding: 10px;
+  }
+
+  .login-card {
+    padding: 30px 20px;
+  }
+
+  .login-title {
+    font-size: 20px;
+  }
+
+  .login-options {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .forgot-password,
+  .register {
+    margin: 0;
+  }
+}
+
+/* ===== LOADING ANIMATION ===== */
+.login-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.login-button.loading:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== ADDITIONAL ENHANCEMENTS ===== */
+.login-card:before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.login-card:after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  border-radius: 50%;
+  opacity: 0.1;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  .login-page {
+    background: linear-gradient(
+      135deg,
+      var(--primary-color),
+      var(--secondary-color)
+    );
+  }
+
+  .login-card {
+    background: #2d3748;
+    color: white;
+  }
+
+  .login-title {
+    color: white;
+  }
+
+  .login-subtitle {
+    color: #cbd5e0;
+  }
+
+  .login-label {
+    color: #e2e8f0;
+  }
+
+  .login-input {
+    background: #374151;
+    border-color: #4b5563;
+    color: white;
+  }
+
+  .login-input::placeholder {
+    color: #9ca3af;
+  }
+
+  .login-demo-section {
+    background-color: #374151;
+  }
+
+  .login-demo-title {
+    color: #e2e8f0;
+  }
+
+  .login-demo-info {
+    color: #cbd5e0;
+  }
+}
