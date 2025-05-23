@@ -14,39 +14,101 @@
 
 ## Cấu trúc thư mục
 
-```
-.
-├── app.py                  # File chính của ứng dụng
-├── layout.py               # Định nghĩa giao diện người dùng
-├── callbacks.py            # Xử lý tương tác người dùng
-├── assets/                 # Thư mục chứa CSS và tài nguyên tĩnh
-│   └── style.css           # File CSS chính
-├── main.py                 # File để chạy ứng dụng
-└── README.md               # Tài liệu hướng dẫn
-```
+````
+├── assets/                         # Thư mục chứa CSS và tài nguyên tĩnh
+│   |── ico                         # Thư mục chứa favicon
+|   |
+│   |── brandname.css
+│   |── data-buttons.css
+│   |── login.css
+│   |── navigation.css
+│   └── style.css                   # File CSS chính
+├── ho_tro
+│   |── dieu_khoan.html
+│   |── huong_dan_su_dung.html
+│   └── thong_bao.html
+├── app.py                          # File chính của ứng dụng
+├── callbacks.py                    # Xử lý tương tác người dùng
+├── diaphantinh.geojson             # file geojson địa phận các tỉnh thành ở Việt Nam
+├── index.html
+├── layout.py                       # Định nghĩa giao diện người dùng
+├── login.py                        # Xử lý đăng nhập
+├── main.py                         # File để chạy ứng dụng
+├── project-summary.md              # Tài liệu giới thiệu dự án
+├── README.md                       # Tài liệu hướng dẫn
+├── routes.py                       # Xử lý đường dẫn
+└── vipham.csv                      # File csv dữ liệu vi phạm
+
+YÊU CẦU TỐI THIỂU
+| Yêu cầu | Mô tả |
+| ------------------- | ---------------------------------------------------------------- |
+| Python 3.7+ | Môi trường chạy code Python |
+| Thư viện Python | dash, dash-bootstrap-components, plotly, pandas, numpy, flask |
+| File GeoJSON hợp lệ | Dữ liệu địa lý tỉnh/thành (định dạng chuẩn) |
+| File CSV dữ liệu | Dữ liệu giao thông có cột tên tỉnh/thành và các trường cần thiết |
+| Chạy file `main.py` | Khởi chạy app Dash và Flask server |
+| Trình duyệt | Truy cập localhost:8050 để dùng app |
 
 ## Cài đặt
 
-1. Clone repository này về máy
+1. Yêu cầu môi trường (Dependencies)
+   Cài đặt Python (phiên bản nên là 3.7 trở lên).
+
+Cài đặt các thư viện Python cần thiết, đặc biệt:
+
+dash
+
+dash-bootstrap-components
+
+dash-bootstrap-templates
+
+plotly
+
+pandas
+
+numpy
+
+flask (do Dash chạy trên Flask)
+
+2. Clone repository này về máy
 
 ```bash
-git clone https://github.com/username/vietnam-traffic-analysis.git
+git https://github.com/Azure06072005/Vietnam-traffic-management-application.git
 cd vietnam-traffic-analysis
-```
+````
 
-2. Cài đặt các thư viện cần thiết
+3. Cài đặt các thư viện cần thiết
 
 ```bash
-pip install dash dash-core-components dash-html-components dash-table plotly pandas numpy
+pip install dash dash-bootstrap-components dash-bootstrap-templates plotly pandas numpy flask
 ```
 
-3. Chạy ứng dụng
+4. Chạy ứng dụng
 
 ```bash
 python main.py
 ```
 
-4. Mở trình duyệt và truy cập địa chỉ: `http://127.0.0.1:8050/`
+5. Mở trình duyệt và truy cập địa chỉ: `http://localhost:8050`
+
+6. Sử dụng ứng dụng
+   Trang đầu tiên sẽ là trang đăng nhập, dùng tài khoản mặc định:
+   Username: admin
+   Password: 123456
+
+7. Đăng nhập thành công, bạn sẽ vào trang dashboard.
+   - Upload file GeoJSON và CSV dữ liệu qua các khu vực upload.
+   - Chọn cột dữ liệu, loại dữ liệu, tùy chỉnh hiển thị.
+     ├── Cột tỉnh thành -> chọn Ten_Tinh_Thanh
+     | ├── Cột loại dữ liệu -> các loại dữ liệu được chọn
+     | ├── Vi phạm giao thông
+     | ├── Tai nạn giao thông
+     | ├── Tử vong
+     | ├── Bị thương
+     | └── Mức phạt
+     | | └── Cột dữ liệu -> Chọn MAVP
+   - Nhấn "Xử lý dữ liệu" để xem kết quả (bản đồ, biểu đồ, bảng dữ liệu).
+   - Có thể chuyển đổi ngôn ngữ, truy cập các trang hỗ trợ qua menu.
 
 ## Hướng dẫn sử dụng
 
