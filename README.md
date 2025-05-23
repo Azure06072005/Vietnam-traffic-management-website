@@ -94,22 +94,23 @@ python main.py
 
 6. Sử dụng ứng dụng
    Trang đầu tiên sẽ là trang đăng nhập, dùng tài khoản mặc định:
+   '''
    Username: admin
    Password: 123456
-
-7. Đăng nhập thành công, bạn sẽ vào trang dashboard.
-   - Upload file GeoJSON và CSV dữ liệu qua các khu vực upload.
-   - Chọn cột dữ liệu, loại dữ liệu, tùy chỉnh hiển thị.
-     ├── Cột tỉnh thành -> chọn Ten_Tinh_Thanh
-     | ├── Cột loại dữ liệu -> các loại dữ liệu được chọn
-     | ├── Vi phạm giao thông
-     | ├── Tai nạn giao thông
-     | ├── Tử vong
-     | ├── Bị thương
-     | └── Mức phạt
-     | | └── Cột dữ liệu -> Chọn MAVP
-   - Nhấn "Xử lý dữ liệu" để xem kết quả (bản đồ, biểu đồ, bảng dữ liệu).
-   - Có thể chuyển đổi ngôn ngữ, truy cập các trang hỗ trợ qua menu.
+   '''
+   ''''7. Đăng nhập thành công, bạn sẽ vào trang dashboard.
+   Upload file GeoJSON và CSV dữ liệu qua các khu vực upload.
+   Chọn cột dữ liệu, loại dữ liệu, tùy chỉnh hiển thị.
+   ├── Cột tỉnh thành -> chọn Ten_Tinh_Thanh
+   | ├── Cột loại dữ liệu -> các loại dữ liệu được chọn
+   | ├── Vi phạm giao thông
+   | ├── Tai nạn giao thông
+   | ├── Tử vong
+   | ├── Bị thương
+   | └── Mức phạt
+   | | └── Cột dữ liệu -> Chọn MAVP
+   Nhấn "Xử lý dữ liệu" để xem kết quả (bản đồ, biểu đồ, bảng dữ liệu).
+   Có thể chuyển đổi ngôn ngữ, truy cập các trang hỗ trợ qua menu.
 
 ## Hướng dẫn sử dụng
 
