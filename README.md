@@ -40,14 +40,15 @@
 └── vipham.csv                      # File csv dữ liệu vi phạm
 
 YÊU CẦU TỐI THIỂU
-| Yêu cầu | Mô tả |
+| Yêu cầu             | Mô tả                                                            |
 | ------------------- | ---------------------------------------------------------------- |
-| Python 3.7+ | Môi trường chạy code Python |
-| Thư viện Python | dash, dash-bootstrap-components, plotly, pandas, numpy, flask |
-| File GeoJSON hợp lệ | Dữ liệu địa lý tỉnh/thành (định dạng chuẩn) |
-| File CSV dữ liệu | Dữ liệu giao thông có cột tên tỉnh/thành và các trường cần thiết |
-| Chạy file `main.py` | Khởi chạy app Dash và Flask server |
-| Trình duyệt | Truy cập localhost:8050 để dùng app |
+| Python 3.7+         | Môi trường chạy code Python                                      |
+| Thư viện Python     | dash, dash-bootstrap-components, plotly, pandas, numpy, flask    |
+| File GeoJSON hợp lệ | Dữ liệu địa lý tỉnh/thành (định dạng chuẩn)                      |
+| File CSV dữ liệu    | Dữ liệu giao thông có cột tên tỉnh/thành và các trường cần thiết |
+| Chạy file `main.py` | Khởi chạy app Dash và Flask server                               |
+| Trình duyệt         | Truy cập localhost:8050 để dùng app                              |
+└─────────────────────────────────────────────────────────────────────────────────────────
 
 ## Cài đặt
 
