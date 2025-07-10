@@ -1,3 +1,4 @@
+# app.py
 import dash
 from dash import dcc, html, Input, Output, State, dash_table
 import plotly.express as px
@@ -13,23 +14,23 @@ from routes import register_routes
 import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 
-# Import các module khác
+# 他のモジュールをインポート
 from routes import register_routes
 from login import create_login_layout, register_login_callbacks, DEFAULT_ADMIN_USERNAME, DEFAULT_ADMIN_PASSWORD
 
-# Định nghĩa các biến toàn cục để lưu trữ dữ liệu
+# データを保存するためのグローバル変数を定義
 global_geojson = None
 global_data = None
 global_summary = None
 
-# Tạo mẫu CSS tùy chỉnh
+# カスタムCSSテンプレートを作成
 external_stylesheets = [
     'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css',
     dbc.themes.BOOTSTRAP,
-    '/assets/login.css'  # Thêm CSS cho login
+    '/assets/login.css'  # ログイン用CSSを追加
 ]
 
-# Khởi tạo ứng dụng Dash
+# Dashアプリケーションを初期化
 app = dash.Dash(__name__, 
                 title='VNTraffic Dashboard',
                 suppress_callback_exceptions=True,
@@ -37,13 +38,13 @@ app = dash.Dash(__name__,
                 meta_tags=[{'name': 'viewport', 
                            'content': 'width=device-width, initial-scale=1.0'}])
 
-# Thiết lập favicon
+# ファビコンを設定
 app._favicon = 'favicon.ico'
 
-# Import layout chủ từ file layout.py
+# layout.pyからメインレイアウトをインポート
 from layout import create_layout
 
-# Layout main app
+# Main app layout
 def create_main_app_layout():
     return html.Div([
         dcc.Location(id='url', refresh=False),
@@ -51,41 +52,41 @@ def create_main_app_layout():
         html.Div(id='page-content')
     ])
 
-# Set layout
+# レイアウトを設定
 app.layout = create_main_app_layout()
 
-# Main callback để điều hướng trang
+# ページナビゲーションのためのメインコールバック
 @app.callback(
     Output('page-content', 'children'),
     [Input('url', 'pathname')],
     [State('login-session', 'data')]
 )
 def display_page(pathname, session_data):
-    """Điều hướng trang dựa trên URL và trạng thái đăng nhập"""
+    """URLとログイン状態に基づいてページをナビゲートする"""
     
-    # Kiểm tra trạng thái đăng nhập
+    # ログイン状態を確認
     if not session_data or not session_data.get('authenticated', False):
-        # Chưa đăng nhập, hiển thị trang login
+        # 未ログイン、ログインページを表示
         return create_login_layout()
     
-    # Đã đăng nhập, hiển thị dashboard
+    # ログイン済み、ダッシュボードを表示
     if pathname in ['/', '/dashboard']:
         return create_layout()
     elif pathname == '/logout':
-        # Xử lý đăng xuất
+        # ログアウト処理
         return html.Div([
             dcc.Store(id='logout-trigger', data={'logout': True}),
-            html.H2('Đang đăng xuất...', style={'text-align': 'center', 'margin-top': '50px'})
+            html.H2('ログアウトしています...', style={'text-align': 'center', 'margin-top': '50px'})
         ])
     else:
-        # Trang không tìm thấy
+        # ページが見つからない場合
         return html.Div([
-            html.H2('404 - Trang không tồn tại', style={'text-align': 'center'}),
-            html.P('Trang bạn tìm kiếm không tồn tại.', style={'text-align': 'center'}),
-            html.A('Quay về trang chủ', href='/', style={'text-align': 'center', 'display': 'block'})
+            html.H2('404 - ページが見つかりません', style={'text-align': 'center'}),
+            html.P('お探しのページは存在しません。', style={'text-align': 'center'}),
+            html.A('ホームページに戻る', href='/', style={'text-align': 'center', 'display': 'block'})
         ])
 
-# Callback xử lý đăng nhập
+# ログイン処理のコールバック
 @app.callback(
     [Output('login-session', 'data', allow_duplicate=True),
      Output('url', 'pathname', allow_duplicate=True)],
@@ -96,13 +97,13 @@ def display_page(pathname, session_data):
     prevent_initial_call=True
 )
 def handle_login(n_clicks, username, password, remember_me):
-    """Xử lý logic đăng nhập"""
+    """ログインロジックを処理する"""
     if n_clicks == 0:
         return dash.no_update, dash.no_update
     
-    # Xác thực thông tin đăng nhập
+    # ログイン情報を検証
     if username == DEFAULT_ADMIN_USERNAME and password == DEFAULT_ADMIN_PASSWORD:
-        # Đăng nhập thành công
+        # ログイン成功
         session_data = {
             'authenticated': True,
             'username': username,
@@ -110,10 +111,10 @@ def handle_login(n_clicks, username, password, remember_me):
         }
         return session_data, '/dashboard'
     
-    # Đăng nhập thất bại
+    # ログイン失敗
     return {'authenticated': False}, '/login'
 
-# Callback xử lý đăng xuất
+# ログアウト処理のコールバック
 @app.callback(
     [Output('login-session', 'data', allow_duplicate=True),
      Output('url', 'pathname', allow_duplicate=True)],
@@ -121,12 +122,12 @@ def handle_login(n_clicks, username, password, remember_me):
     prevent_initial_call=True
 )
 def handle_logout(logout_data):
-    """Xử lý đăng xuất"""
+    """ログアウトを処理する"""
     if logout_data and logout_data.get('logout', False):
         return {'authenticated': False}, '/'
     return dash.no_update, dash.no_update
 
-# Callback hiển thị lỗi đăng nhập
+# ログインエラー表示のコールバック
 @app.callback(
     [Output('login-error', 'children'),
      Output('login-error', 'className')],
@@ -137,38 +138,38 @@ def handle_logout(logout_data):
     prevent_initial_call=True
 )
 def show_login_error(n_clicks, username, password, session_data):
-    """Hiển thị thông báo lỗi khi đăng nhập thất bại"""
+    """ログイン失敗時にエラーメッセージを表示する"""
     if n_clicks == 0:
         return "", "login-error"
     
-    # Kiểm tra nếu đã đăng nhập thành công
+    # ログインに成功しているか確認
     if session_data and session_data.get('authenticated', False):
         return "", "login-error"
     
-    # Kiểm tra thông tin nhập vào
+    # 入力情報を確認
     if not username or not password:
-        return "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu", "login-error show"
+        return "ユーザー名とパスワードをすべて入力してください", "login-error show"
     
-    # Thông báo lỗi sai thông tin
+    # 不正な情報のエラーメッセージ
     if username != DEFAULT_ADMIN_USERNAME or password != DEFAULT_ADMIN_PASSWORD:
-        return "Tên đăng nhập hoặc mật khẩu không chính xác", "login-error show"
+        return "ユーザー名またはパスワードが正しくありません", "login-error show"
     
     return "", "login-error"
 
-# Import callbacks từ file callbacks.py
+# callbacks.pyからコールバックをインポート
 from callbacks import register_callbacks
 
-# Function để sửa lỗi tọa độ trong GeoJSON (copy từ code cũ)
+# GeoJSONの座標エラーを修正する関数（旧コードからコピー）
 def fix_geojson_coordinates(geojson_data):
-    """Sửa lỗi trong các tọa độ GeoJSON và đảm bảo mỗi feature có ID"""
+    """GeoJSONの座標エラーを修正し、各フィーチャにIDを付与する"""
     
-    # Phạm vi tọa độ hợp lý cho Việt Nam
+    # ベトナムの妥当な座標範囲
     VN_LON_MIN, VN_LON_MAX = 102.0, 110.0
     VN_LAT_MIN, VN_LAT_MAX = 8.0, 24.0
     
     coords_need_fixing = False
     
-    # Kiểm tra tọa độ đầu tiên để xem có cần đảo ngược không
+    # 最初の座標をチェックして反転が必要か判断
     if len(geojson_data['features']) > 0:
         feature = geojson_data['features'][0]
         if 'geometry' in feature and 'coordinates' in feature['geometry']:
@@ -177,12 +178,12 @@ def fix_geojson_coordinates(geojson_data):
                 if len(first_ring) > 0:
                     first_coord = first_ring[0]
                     
-                    # Kiểm tra xem tọa độ có nằm trong phạm vi Việt Nam không
+                    # 座標がベトナムの範囲内にあるか確認
                     if (first_coord[0] < VN_LON_MIN or first_coord[0] > VN_LON_MAX or
                         first_coord[1] < VN_LAT_MIN or first_coord[1] > VN_LAT_MAX):
                         coords_need_fixing = True
     
-    # Sửa tọa độ nếu cần
+    # 必要なら座標を修正
     if coords_need_fixing:
         for feature in geojson_data['features']:
             if 'geometry' in feature and 'coordinates' in feature['geometry']:
@@ -191,7 +192,7 @@ def fix_geojson_coordinates(geojson_data):
                 if geometry_type == 'Polygon':
                     for ring_idx in range(len(feature['geometry']['coordinates'])):
                         for point_idx in range(len(feature['geometry']['coordinates'][ring_idx])):
-                            # Đảo ngược [x, y] thành [y, x]
+                            # [x, y]を[y, x]に反転
                             feature['geometry']['coordinates'][ring_idx][point_idx] = [
                                 feature['geometry']['coordinates'][ring_idx][point_idx][1],
                                 feature['geometry']['coordinates'][ring_idx][point_idx][0]
@@ -201,30 +202,30 @@ def fix_geojson_coordinates(geojson_data):
                     for poly_idx in range(len(feature['geometry']['coordinates'])):
                         for ring_idx in range(len(feature['geometry']['coordinates'][poly_idx])):
                             for point_idx in range(len(feature['geometry']['coordinates'][poly_idx][ring_idx])):
-                                # Đảo ngược [x, y] thành [y, x]
+                                # [x, y]を[y, x]に反転
                                 feature['geometry']['coordinates'][poly_idx][ring_idx][point_idx] = [
                                     feature['geometry']['coordinates'][poly_idx][ring_idx][point_idx][1],
                                     feature['geometry']['coordinates'][poly_idx][ring_idx][point_idx][0]
                                 ]
     
-    # Thêm ID cho mỗi feature
+    # 各フィーチャにIDを追加
     for feature in geojson_data['features']:
         if 'properties' in feature and 'ten_tinh' in feature['properties']:
             feature['id'] = feature['properties']['ten_tinh']
     
     return geojson_data
 
-# Function xử lý giá trị tiền tệ
+# 通貨の値を処理する関数
 def parse_currency(value):
-    """Chuyển đổi chuỗi tiền tệ (vd: '40000000 ₫') thành số"""
+    """通貨文字列（例: '40000000 ₫'）を数値に変換する"""
     if isinstance(value, str):
-        # Loại bỏ ký tự tiền tệ và khoảng trắng
+        # 通貨記号と空白を削除
         return int(value.replace('₫', '').replace(' ', '').strip())
     return value
 
-# Function để xử lý tải lên file
+# ファイルアップロードを処理する関数
 def parse_contents(contents, filename):
-    """Phân tích nội dung file đã tải lên"""
+    """アップロードされたファイルの内容を解析する"""
     import base64
     import io
     import pandas as pd
@@ -235,24 +236,24 @@ def parse_contents(contents, filename):
     
     try:
         if 'csv' in filename.lower():
-            # Đọc file CSV
+            # CSVファイルを読み込む
             df = pd.read_csv(io.StringIO(decoded.decode('utf-8')))
             return df, None
         elif 'json' in filename.lower() or 'geojson' in filename.lower():
-            # Đọc file GeoJSON
+            # GeoJSONファイルを読み込む
             geojson_data = json.loads(decoded.decode('utf-8'))
-            # Sửa lỗi tọa độ trong GeoJSON
+            # GeoJSONの座標エラーを修正
             fixed_geojson = fix_geojson_coordinates(geojson_data)
             return fixed_geojson, None
         else:
-            return None, f"Định dạng file {filename} không được hỗ trợ."
+            return None, f"ファイル形式 {filename} はサポートされていません。"
     except Exception as e:
-        return None, f"Đã xảy ra lỗi khi xử lý file {filename}: {str(e)}"
+        return None, f"ファイル {filename} の処理中にエラーが発生しました: {str(e)}"
 
-# Đăng ký callbacks
+# コールバックを登録
 register_callbacks(app, parse_contents, parse_currency)
 register_routes(app)
 
-# Chạy ứng dụng
+# アプリケーションを実行
 if __name__ == '__main__':
     app.run(debug=True, host='localhost')

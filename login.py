@@ -1,86 +1,86 @@
 from dash import dcc, html, Input, Output, State, callback_context
 import dash
 
-# Định nghĩa thông tin đăng nhập mặc định
+# デフォルトのログイン情報
 DEFAULT_ADMIN_USERNAME = "admin"
 DEFAULT_ADMIN_PASSWORD = "123456"
 
 def create_login_layout():
-    """Tạo layout cho trang đăng nhập"""
+    """ログインページのレイアウトを作成する"""
     return html.Div([
         html.Div([
             html.Div([
-                # Logo và tiêu đề
+                # ロゴとタイトル
                 html.Div([
                     html.Img(src='/assets/logo.png', className='login-logo'),
-                    html.H1('Giao thông đường bộ Việt Nam', className='login-title'),
-                    html.H2('Đăng nhập hệ thống', className='login-subtitle')
+                    html.H1('ベトナムの道路交通システム', className='login-title'),
+                    html.H2('ログイン画面', className='login-subtitle')
                 ], className='login-header'),
                 
-                # Form đăng nhập
+                # ログインフォーム
                 html.Div([
                     html.Div([
-                        html.Label('Tên đăng nhập', className='login-label'),
+                        html.Label('ユーザー名', className='login-label'),
                         dcc.Input(
                             id='username-input',
                             type='text',
-                            placeholder='Nhập tên đăng nhập của bạn',
+                            placeholder='ユーザー名を入力してください',
                             className='login-input',
                             value=''
                         )
                     ], className='login-field'),
                     
                     html.Div([
-                        html.Label('Mật khẩu', className='login-label'),
+                        html.Label('パスワード', className='login-label'),
                         dcc.Input(
                             id='password-input',
                             type='password',
-                            placeholder='Nhập mật khẩu của bạn',
+                            placeholder='パスワードを入力してください',
                             className='login-input',
                             value=''
                         )
                     ], className='login-field'),
                     
-                    # Checkbox "Ghi nhớ đăng nhập"
+                    # 「ログイン状態を記憶」チェックボックス
                     html.Div([
                         dcc.Checklist(
                             id='remember-me',
-                            options=[{'label': ' Ghi nhớ đăng nhập', 'value': 'remember'}],
+                            options=[{'label': ' ログイン状態を記憶する', 'value': 'remember'}],
                             value=[],
                             className='remember-checkbox'
                         )
                     ], className='login-field'),
                     
-                    # Nút đăng nhập
-                    html.Button('Đăng nhập', id='login-button', className='login-button', n_clicks=0),
+                    # ログインボタン
+                    html.Button('ログイン', id='login-button', className='login-button', n_clicks=0),
                     
-                    # Hiển thị lỗi
+                    # エラーメッセージの表示
                     html.Div(id='login-error', className='login-error'),
                     
-                    # Các liên kết phụ
+                    # サブリンク
                     html.Div([
-                        html.A('Quên mật khẩu?', href='#', className='login-link forgot-password'),
-                        html.A('Chưa có tài khoản? Đăng ký ngay', href='#', className='login-link register')
+                        html.A('パスワードを忘れた場合', href='#', className='login-link forgot-password'),
+                        html.A('アカウントが未登録ですか？今すぐ登録', href='#', className='login-link register')
                     ], className='login-options'),
                     
-                    # Thông tin tài khoản mặc định
+                    # デモ用ログイン情報
                     html.Div([
-                        html.P('Tài khoản demo:', className='login-demo-title'),
-                        html.P(f'Username: {DEFAULT_ADMIN_USERNAME}', className='login-demo-info'),
-                        html.P(f'Password: {DEFAULT_ADMIN_PASSWORD}', className='login-demo-info')
+                        html.P('デモアカウント：', className='login-demo-title'),
+                        html.P(f'ユーザー名: {DEFAULT_ADMIN_USERNAME}', className='login-demo-info'),
+                        html.P(f'パスワード: {DEFAULT_ADMIN_PASSWORD}', className='login-demo-info')
                     ], className='login-demo-section')
                 ], className='login-form-container')
             ], className='login-card')
         ], className='login-wrapper'),
         
-        # Store để lưu trạng thái đăng nhập
+        # ログイン状態を保存するStore
         dcc.Store(id='login-state', data={'authenticated': False}),
         dcc.Location(id='login-url', refresh=True)
     ], className='login-page')
 
 
 def register_login_callbacks(app):
-    """Đăng ký các callback cho hệ thống đăng nhập"""
+    """ログインシステムのコールバックを登録する"""
     
     @app.callback(
         [Output('login-error', 'children'),
@@ -94,23 +94,23 @@ def register_login_callbacks(app):
         prevent_initial_call=True
     )
     def authenticate_user(n_clicks, username, password, remember_me):
-        """Xử lý đăng nhập"""
+        """ユーザー認証処理"""
         if n_clicks == 0:
             return "", "login-error", {'authenticated': False}, "/"
         
-        # Reset thông báo lỗi
+        # エラーメッセージ初期化
         error_message = ""
         error_class = "login-error"
         
-        # Kiểm tra thông tin đăng nhập
+        # 入力確認
         if not username or not password:
-            error_message = "Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu"
+            error_message = "ユーザー名とパスワードを入力してください。"
             error_class = "login-error show"
             return error_message, error_class, {'authenticated': False}, "/"
         
-        # Xác thực người dùng
+        # 認証処理
         if username == DEFAULT_ADMIN_USERNAME and password == DEFAULT_ADMIN_PASSWORD:
-            # Đăng nhập thành công
+            # 認証成功
             login_data = {
                 'authenticated': True,
                 'username': username,
@@ -118,8 +118,8 @@ def register_login_callbacks(app):
             }
             return "", "login-error", login_data, "/dashboard"
         else:
-            # Đăng nhập thất bại
-            error_message = "Tên đăng nhập hoặc mật khẩu không chính xác"
+            # 認証失敗
+            error_message = "ユーザー名またはパスワードが正しくありません。"
             error_class = "login-error show"
             return error_message, error_class, {'authenticated': False}, "/"
     
@@ -130,13 +130,12 @@ def register_login_callbacks(app):
         prevent_initial_call=True
     )
     def clear_inputs_on_load(pathname):
-        """Xóa input khi tải trang"""
+        """ページ読み込み時に入力をクリア"""
         if pathname in ['/', '/login']:
             return '', ''
         return dash.no_update, dash.no_update
 
 
 def check_authentication():
-    """Kiểm tra trạng thái xác thực"""
-    # Hàm này có thể được mở rộng để kiểm tra session, token, v.v.
+    """認証状態をチェックする関数（今後拡張予定）"""
     pass
