@@ -59,12 +59,12 @@ def create_login_layout():
                     
                     # サブリンク
                     html.Div([
-                        html.A('パスワードを忘れた場合', href='#', className='login-link forgot-password'),
-                        html.A('アカウントが未登録ですか？今すぐ登録', href='#', className='login-link register')
+                        html.A('ログインできない方', href='#', className='login-link forgot-password'),
+                        html.A('新規登録（無料）', href='#', className='login-link register')
                     ], className='login-options'),
                     
                     # デモ用ログイン情報
-                    html.Div([
+                    html.Div([  
                         html.P('デモアカウント：', className='login-demo-title'),
                         html.P(f'ユーザー名: {DEFAULT_ADMIN_USERNAME}', className='login-demo-info'),
                         html.P(f'パスワード: {DEFAULT_ADMIN_PASSWORD}', className='login-demo-info')
