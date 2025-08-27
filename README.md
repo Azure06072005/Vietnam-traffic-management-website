@@ -145,7 +145,7 @@ http://localhost:8050
 
 このプロジェクトはMITライセンスで提供されています。
 <p align="center">
-   <img src="https://github.com/user-attachments/assets/d1efcba6-adfe-49e6-b925-f3fa7828e28a" alt="データのマップ" width="600px"/>
+   <img src="https://github.com/user-attachments/assets/d1efcba6-adfe-49e6-b925-f3fa7828e28a" alt="データのマップ"/>
 </p>
 ## 注意事項と改善提案
 
