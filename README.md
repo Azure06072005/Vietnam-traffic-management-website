@@ -144,9 +144,7 @@ http://localhost:8050
 ## ライセンス
 
 このプロジェクトはMITライセンスで提供されています。
-<p align="center">
-    <img src="https://github.com/user-attachments/assets/b53927b0-6e7f-49bd-823a-a6319c406f81" alt="Map data" width="600"/>
-</p>
+<img src="https://github.com/user-attachments/assets/d1efcba6-adfe-49e6-b925-f3fa7828e28a" width="600px"/>
 ## 注意事項と改善提案
 
 - **実運用時はパスワード変更を推奨します**
