@@ -91,6 +91,9 @@ http://localhost:8050
 パスワード: 123456
 ```
 
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/95880a9f-2ea0-40a6-9068-e0750b39ac94" alt="Login video" width="100%"/>
+</p>
 > **注意**: セキュリティのため、実運用時はパスワードを変更してください。
 
 ---
