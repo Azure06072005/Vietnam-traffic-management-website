@@ -113,6 +113,9 @@ http://localhost:8050
      - 負傷数
      - 罰金額
    - **データカラム**: `MAVP`
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/bc9bbc74-95bf-4fea-a2a0-48d26248e95f" alt="data input and setting video" width="100%"/>
+</p>
 4. 「データ処理」ボタンをクリックして、結果を表示
 
 または、「サンプルデータを使用」ボタンでデモを体験できます。
