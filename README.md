@@ -137,7 +137,9 @@ http://localhost:8050
 - 省市名（GeoJSONの`ten_tinh`と一致する必要あり）
 - 交通違反データ
 - 交通事故データ
-
+<p align="center">
+   <img src="https://github.com/user-attachments/assets/d1efcba6-adfe-49e6-b925-f3fa7828e28a" alt="データのマップ"/>
+</p>
 ---
 
 ## 今後の拡張予定
@@ -150,9 +152,6 @@ http://localhost:8050
 ## ライセンス
 
 このプロジェクトはMITライセンスで提供されています。
-<p align="center">
-   <img src="https://github.com/user-attachments/assets/d1efcba6-adfe-49e6-b925-f3fa7828e28a" alt="データのマップ"/>
-</p>
 ## 注意事項と改善提案
 
 - **実運用時はパスワード変更を推奨します**
